@@ -146,13 +146,26 @@ class PostsController extends Controller
 
 
     public function searchPost(){
-        $r=request();
-        $keyword=$r->keyword;
-        $posts=DB::table('posts')->where('title','like','%'.$keyword.'%')->get();
-        return redirect('/blog')->with('posts',$posts);
+        // $r=request();
+        // $keyword=$r->keyword;
+        // $posts=DB::table('posts')->where('title','like','%'.$keyword.'%')->get();
+        // return redirect('/blog')->with('posts',$posts);
+
+        $search_text = $_GET['keyword'];
+        $posts = Post::where('title', 'LIKE', '%'.$search_text.'%')
+        ->orWhere('description', 'LIKE', '%'.$search_text.'%')
+        ->orWhereHas('user', function ($query) use ($search_text) {
+        $query->where('name', 'LIKE', '%'.$search_text.'%');
+        })
+        ->get();
+
+;
+
+        return view('blog.index', compact('posts'));
+
     }
 
-    
+
     public function mypost()
     {
        // Get the authenticated user's ID

@@ -161,15 +161,16 @@ form.example::after {
                     </li>
                 </ul>
 
-                <form class="example" action="{{ route('search.post') }}" method="POST" style="margin:auto;width:360px;">
-    @csrf
-    <!-- Input field for the search keyword -->
-    <input type="text" placeholder="Search..." name="keyword" class="w-full border-2 border-gray-800 p-3 rounded-lg focus:outline-none focus:border-blue-900" style="width:280px;">
-    <!-- Submit button -->
-    <button type="submit" class="w-full border-2 border-gray-800 p-3 rounded-lg focus:outline-none focus:border-blue-900" style="width: 55px;">
-        <i class="fa fa-search"></i>
-    </button>
-</form>
+                <form class="example" action="{{ route('search.post') }}" method="get" style="margin:auto;width:360px;">
+                    @csrf
+                    <!-- Input field for the search keyword -->
+                    <input type="text" placeholder="Search..." name="keyword" class="w-full border-2 border-gray-800 p-3 rounded-lg focus:outline-none focus:border-blue-900" style="width:280px;">
+                    <!-- Submit button -->
+                    <button type="submit" class="w-full border-2 border-gray-800 p-3 rounded-lg focus:outline-none focus:border-blue-900"
+                    style="width: 55px;">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
 
                 &nbsp; &nbsp; &nbsp;
 

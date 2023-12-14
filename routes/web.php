@@ -26,7 +26,9 @@ Route::get('/', function () {
 //Blog
 Route::resource('/blog', PostsController::class);
 
-Route::post('/Viewpost',[App\Http\Controllers\PostsController::class, 'searchPost'] ) ->name('search.post');
+Route::get('/blog',[App\Http\Controllers\PostsController::class, 'index'] );
+
+Route::get('/Viewpost',[App\Http\Controllers\PostsController::class, 'searchPost'] )->name('search.post');
 
 Route::get('/mypost',[App\Http\Controllers\PostsController::class,'mypost'])->name('mypost');
 

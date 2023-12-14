@@ -191,6 +191,17 @@ h1 {
 
 <button onclick="scrollToBottom()" id="scroll-down-button" title="Scroll Down">▼</button>
 
+@if ($posts->isEmpty())
+<div class="card border-danger">
+    <div class="card-body text-center">
+    <h5 class="card-title text-danger display-4"><i class="fas fa-exclamation-circle mr-2"></i>No Results Found</h5>
+        <p class="card-text text-muted">Sorry, no matching records were found for your search.</p>
+    </div>
+</div>
+
+
+@else
+
 @foreach($posts as $post)
 
 <div class="row">
@@ -311,6 +322,7 @@ h1 {
     </div>
 </div>
 
+
 <script>
   window.onscroll = function() {scrollFunction()};
 
@@ -329,4 +341,5 @@ h1 {
 </script>
 <br><br>
 @endforeach
+@endif
 @endsection

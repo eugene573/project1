@@ -13,13 +13,20 @@ h3 {
   text-shadow: 3px 3px 3px white, 0 0 20px white, 0 0 10px white;
   }
 
+  body{
+        background-color: beige;
+    }
+
 h5{
     font-weight: bold;
     font-family: 'Times New Roman', Times, serif;
     font-size: 1.55rem;
     text-align:left;
     margin-left:125px;
+}
 
+.text-center {
+    text-align: center; /* Centers the content horizontally */
 }
 
 </style>
@@ -46,7 +53,7 @@ h5{
             &nbsp;
             {{ date('H:i A', strtotime($post->updated_at)) }}
             </h6>
-                   
+
             </div>
             </center>
 
@@ -79,13 +86,16 @@ h5{
 
         <form method="post" action="{{ route( 'comments.store' ) }}">
         @csrf
+        <div class="text-center">
             <div class="form-group">
             <input type="text" class="w-full border-2 border-gray-800 p-3 rounded-lg focus:outline-none focus:border-blue-900" textarea class="form-control-first" name="body"  style="width: 75rem;"></textarea>
                 <input type="hidden" name="post_id" value="{{ $post->id }}" />
             </div>
+
             <div class="form-group">
             <input type="submit" class="btn btn-primary" style="border-radius: 4px; text-color: black;" value="Add Comment" /><br><br>
             </div>
+        </div>
         </form>
 
 <hr style="width:85%">
